@@ -66,6 +66,19 @@ public class Tp2Application implements CommandLineRunner {
         c2.setDescription("Cours de Physique.");
         c1.setTitle("Maths");
         c2.setTitle("Physics");
+
+        Professor p1 = new Professor();
+        Professor p2 = new Professor();
+
+        p1.setNom("Mohammed");
+        p2.setNom("Seddiq");
+        Date d_assignment_1 = new Date(112,3,20);
+        Date d_assignment_2 = new Date(112,3,20);
+        p1.setD_assignment(d_assignment_1);
+        p2.setD_assignment(d_assignment_2);
+        p1.setCourse(c1);
+        p2.setCourse(c2);
+
         Collection<Session> sessions = new ArrayList<Session>();
         sessions.add(session1);
         sessions.add(session2);
@@ -82,13 +95,16 @@ public class Tp2Application implements CommandLineRunner {
         session2.setStudents(students);
         c1.setSessions(sessions);
         c2.setSessions(sessions);
+        session1.setCourse(c1);
+        session2.setCourse(c2);
         studentRepository.save(s1);
         studentRepository.save(s2);
         sessionRepository.save(session1);
         sessionRepository.save(session2);
         courseRepository.save(c1);
         courseRepository.save(c2);
-
+        professorRepository.save(p1);
+        professorRepository.save(p2);
 
 
 
